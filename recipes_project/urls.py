@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings  # Import settings
-from django.conf.urls.static import static  # Import static for serving media files
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('recipes.urls')),
+    path('api/', include('recipes.urls')),  # Ensure this line is correct
 ]
 
 # Serve media files during development

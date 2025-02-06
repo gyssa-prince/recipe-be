@@ -1,6 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.response import Response
+from .models import LandingPageContent
+
 from .models import Recipe, Category
 from .serializers import RecipeSerializer, CategorySerializer
 
@@ -95,3 +98,20 @@ class CategoryDetailView(APIView):
         
         category.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class LandingPageContentView(APIView):
+    def get(self, request):
+        content = LandingPageContent.objects.first()
+        if not content:
+            return Response({"error": "Landing page content not found"}, status=404)
+        
+        return Response({
+            "hero_title": content.hero_title,
+            "hero_description": content.hero_description,
+            "hero_button_text": content.hero_button_text,
+            "hero_image": content.hero_image.url if content.hero_image else None,
+            "about_title": content.about_title,
+            "about_description": content.about_description,
+            "feature_title": content.feature_title,
+            # Removed the "features" field
+        })
