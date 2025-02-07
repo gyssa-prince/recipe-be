@@ -3,17 +3,12 @@
       {
         "src": "recipes/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+        "config": {
+          "maxLambdaSize": "15mb",
+          "runtime": "python3.9",
+          "start": "gunicorn recipes_project.wsgi"
+        }
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "recipes/wsgi.py"
-      }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "recipes_project.settings"
-    }
+    ]
   }
   
