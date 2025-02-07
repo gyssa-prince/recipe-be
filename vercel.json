@@ -1,29 +1,19 @@
 {
     "builds": [
-        {
-            "src": "recipes/wsgi.py",
-            "use": "@vercel/python",
-            "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-        }
+      {
+        "src": "recipes/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "recipes/wsgi.py"
-        }
+      {
+        "src": "/(.*)",
+        "dest": "recipes/wsgi.py"
+      }
     ],
     "env": {
-        "DJANGO_SETTINGS_MODULE": "recipes.settings"
-    },
-    "builds": [
-        {
-            "src": "recipes/wsgi.py",
-            "use": "@vercel/python"
-        },
-        {
-            "src": "manage.py",
-            "use": "@vercel/python",
-            "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-        }
-    ]
-}
+      "DJANGO_SETTINGS_MODULE": "recipes_project.settings"
+    }
+  }
+  
